@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free board</title>
+    <script>
+        // Javascript 사용 공간
+        // 함수 생성
+        // 주소 이동하는 함수
+        function add() {
+            location.href = "/board/add"  // localhost:3000/board/add 주소로 이동
+        }
+    </script>
+</head>
+<body>
+    <h1>게시판</h1>
+    <!-- 게시글이 들어오는 공간 table 게시글 표현 -->
+    <table border="1">
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </tr>
+        <tr>
+            <!-- 서버에서 보내온 데이터를 ejs에서 출력하려면 < % 어쩌구
+                content = [{No:1, title:제목1, contents:내용1, writer:나},
+                           {No:2, title:제목2, contents:내용2, writer:관리자}, ...]
+                1이라는 숫자를 출력하려면? content[0].No -->
+            <td><%=content[0].No%></td>
+            <td><%=content[0].title%></td>
+            <td><%=content[0].writer%></td>
+        </tr>
+        <tr>
+            <td><%=content[1].No%></td>
+            <td><%=content[1].title%></td>
+            <td><%=content[1].writer%></td>
+        </tr>
+        <tr>
+            <td><%=content[2].No%></td>
+            <td><%=content[2].title%></td>
+            <td><%=content[2].writer%></td>
+        </tr>
+        <!-- <tr>
+            <td>< % =content[6].No % ></td>
+            <td>< % =content[6].title % ></td>
+            <td>< % =content[6].writer % ></td>
+        </tr> -->
+    </table>
+     <!-- 글쓰기 버튼 : 클릭하면 글 쓰는 페이지로 이동 -->
+     <button onclick="add()">글 쓰기</button>
+
+</body>
+</html>
