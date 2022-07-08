@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수정 페이지</title>
+</head>
+<body>
+    <form action="/board/update2" method="post">
+        <!-- 글 번호와 작성자는 수정 필요 X, 글 번호는 보통 숨겨준다. -->
+        <div style="display: none;">
+            <label>글 번호</label>
+            <input type="text" name="_no" value="<%=u_no%>"><br>
+        </div>
+        <label>제목</label>
+        <input type="text" name="_title" value="<%=u_title%>"><br>
+        <label>내용</label>
+        <textarea name="_contents"><%=u_contents%></textarea><br>
+        <label>작성자</label>
+        <input type="text" name="_writer" value="<%=u_writer%>">
+        <br><br>
+        <input type="submit" value="완료">
+    </form>
+</body>
+</html>

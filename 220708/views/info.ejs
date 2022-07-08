@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function list() {
+            location.href ="/board"
+        }
+        function podel(no) {
+            location.href = "/board/delete?_no="+no
+        }
+        function update(no, title, contents, writer) {
+            location.href = "/board/update?_no="+no +"&_title="+title+ "&_contents=" +contents +"&_writer="+writer
+        }
+    </script>
+</head>
+<!-- 글 내용 보기 ejs -->
+<body>
+    <!-- 받아온 result 보여주면 되지 -->
+    <table border="4">
+        <tr>
+            <th>제목</th>
+            <td><%=info[0].title%></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><%=info[0].contents%></td>
+        </tr>
+        <tr>
+            <th>작성자</th>
+            <td><%=info[0].writer%></td>
+        </tr>
+    </table>
+
+    <!-- 목록 클릭 했을 때 : /board 이동
+         삭제 클릭 했을 때 : 글 번호(no) 가지고 오고, delete 명령어 사용해 데이터 삭제, 
+                            알리고, 목록으로 이동
+            1. 글 번호를 가지고 API 호출(info.ejs)
+            2. API에서 글 번호를 확인, delete 명령어 사용하여 데이터 삭제(board.js)
+            3. 삭제가 정상적으로 진행되면 목록으로 이동(board.js) -->
+    
+    <br><br>
+    <button onclick="list()">목록</button>
+    <button onclick="podel('<%=info[0].No%>')">삭제</button>
+
+    <!-- 수정 버튼 클릭 시 : 내용 수정할 수 있는 새로운 페이지
+         API 호출 -> 보내줄 데이터(전체 내용 / 글 번호) -->
+    <button onclick="update('<%=info[0].No%>', '<%=info[0].title%>', '<%=info[0].contents%>', '<%=info[0].writer%>')">수정</button>
+
+</body>
+</html>
